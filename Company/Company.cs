@@ -16,9 +16,13 @@ public class Company
         employees.Add(employee);
     }
 
+    public decimal GetEmployeeSalary(Employee employee)
+    { 
+        return employee.GetSalary();
+    }
     public decimal CalculateAvgSalary()
     {
-        return employees.Average(em => em.GetSalary());
+        return employees.Average(GetEmployeeSalary);
     }
 
     public IEnumerable<Employee> GetEmployees()

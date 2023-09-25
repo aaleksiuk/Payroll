@@ -52,11 +52,9 @@ public class Employee
     {
         return Salary;
     }
-
     public string GetAllData()
     {
         return ($"Salary for {GetFirstName()} {GetLastName()} is {GetSalary()}");
     }
-
 }
 
