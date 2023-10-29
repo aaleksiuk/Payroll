@@ -7,12 +7,7 @@ Console.WriteLine($"Add 5 employees to the company list");
 Company company = new Company();
 for (int i = 0; i < 5; i++)
 {
-    Employee employee = new Employee(
-        UserInputHelper.GetPromptNameFromUser("first"),
-        UserInputHelper.GetPromptNameFromUser("last"),
-        UserInputHelper.GetSalaryFromUser());
-
-    company.AddEmployee(employee);
+    company.AddEmployee(EmployeeProvider.GetEmployeeFromConsole());
 }
 string option;
 do
@@ -25,28 +20,23 @@ do
     switch (option)
     {
         case "1":
-            Console.WriteLine(company.CalculateAvgSalary());
-            Console.WriteLine("\n");
+            Console.WriteLine($"{company.CalculateAvgSalary()}\n");
             break;
         case "2":
-            foreach (var employee in company.GetEmployees())
+            foreach (var employee in company.Employees)
             {
-                Console.WriteLine(employee.GetAllData());
-                Console.WriteLine("\n");
-            }
+                Console.WriteLine($"{employee}\n");
+              }
             break;
         case "3":
-            company.AddEmployee(new Employee(
-                UserInputHelper.GetPromptNameFromUser("first"),
-                UserInputHelper.GetPromptNameFromUser("last"),
-                UserInputHelper.GetSalaryFromUser()));
+            company.AddEmployee(EmployeeProvider.GetEmployeeFromConsole());
             break;
         case "4":
             Environment.Exit(0);
             break;
         default:
-            Console.WriteLine("Enter correct option.");
-            Console.WriteLine("\n");
+            Console.WriteLine("Enter correct option.\n");
+
             break;
     }
 } while (option != "4");

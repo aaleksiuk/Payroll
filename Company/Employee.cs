@@ -8,53 +8,58 @@ namespace Payroll;
 
 public class Employee
 {
-    private string FirstName;
-    private string LastName;
-    private decimal Salary;
+    private string _firstName;
+    private string _lastName;
+    private decimal _salary;
+
+    public string FirstName
+    {
+        get { return _firstName; }
+        set
+        {
+            if (value == null)
+            {
+                throw new Exception("Firstname cannot be empty");
+            }
+            _firstName = value;
+        }
+    }
+
+    public string LastName
+    {
+        get { return _lastName; }
+        set
+        {
+            if (value == null)
+            {
+                throw new Exception("Lastname cannot be empty");
+            }
+            _lastName = value;
+        }
+    }
+
+    public decimal Salary
+    {
+        get { return _salary; }
+        set
+        {
+            if (value < 0)
+            {
+                throw new Exception("Salary must be greater than 0");
+            }
+            _salary = value;
+        }
+    }
 
     public Employee(string firstName, string lastName, decimal salary)
     {
-        SetFirstName(firstName);
-        SetLastName(lastName);
-        SetSalary(salary);
-    }
-    public void SetFirstName(string firstName) {
-        if (firstName == null)
-        {
-            throw new Exception("Fistname cannot be empty");
-        }
         FirstName = firstName;
-    }
-    public void SetLastName(string lastName) {
-        if (lastName == null) 
-        {
-            throw new Exception("Lastname cannot be empty");
-        }
         LastName = lastName;
-    }
-    public void SetSalary(decimal salary)
-    {
-        if (salary < 0) 
-        {
-            throw new Exception("Salary must be greater than 0");
-        }
         Salary = salary;
     }
-    public string GetFirstName()
+
+    public override string? ToString()
     {
-        return FirstName;
-    }
-    public string GetLastName()
-    {
-        return LastName;
-    }
-    public decimal GetSalary() 
-    {
-        return Salary;
-    }
-    public string GetAllData()
-    {
-        return ($"Salary for {GetFirstName()} {GetLastName()} is {GetSalary()}");
+        return ($"Salary for {FirstName} {LastName} is {Salary}");
     }
 }
-

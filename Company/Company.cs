@@ -10,25 +10,24 @@ using System.Reflection;
 
 public class Company
 {
-    private List<Employee> employees = new();
+    public List<Employee> Employees { get; set; } = new();
+
     public void AddEmployee(Employee employee)
     {
-        employees.Add(employee);
+        Employees.Add(employee);
     }
 
     public decimal GetEmployeeSalary(Employee employee)
     { 
-        return employee.GetSalary();
+        return employee.Salary;
     }
     public decimal CalculateAvgSalary()
     {
-        return employees.Average(GetEmployeeSalary);
+        return Employees.Average(GetEmployeeSalary);
     }
 
     public IEnumerable<Employee> GetEmployees()
     { 
-        return employees;
+        return Employees;
     }
-    
-
-}
+ }
